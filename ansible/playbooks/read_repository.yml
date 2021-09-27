@@ -1,0 +1,5 @@
+- hosts: localhost
+  tasks:
+
+  - name: Read Nexus Repository
+  shell: somescript.py
