@@ -1,1 +1,26 @@
-test
+name: deploy to aks cluster
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  checking:
+    name: Checking configuration
+    runs-on: [ self-hosted ]
+    environment: development
+    steps:
+      - name: Check env variables
+        run: |
+          if [[ -z "${{secrets.K8S_FQDN}}" ]]; then
+            echo "Define environment variable K8S_FQDN in github environments"
+            exit 1
+          fi
+
+  deploy_ansible:
+    name: launch ansible to deploy to k8s
+    runs-on: [ self-hosted ]
+    steps:
+      
+       
