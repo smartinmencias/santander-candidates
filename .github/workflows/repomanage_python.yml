@@ -48,7 +48,7 @@ jobs:
         env:
           ACTION: ${{ github.event.inputs.manage }}
         run:
-          ls 
+          ls ./scripts/
           python ./scripts/repomanage.py ${{ env.ACTION }}
 
 
