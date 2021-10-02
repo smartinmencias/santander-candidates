@@ -15,7 +15,7 @@ args = parser.parse_args()
 
 if args.list:
 
-        response = requests.get('http://192.168.99.106:32000/service/rest/v1/repositories', auth=('USER', 'PASSWORD'))
+        response = requests.get('http://192.168.99.106:32000/service/rest/v1/repositories', auth=('admin', 'admin123'))
         open('repos.json', 'wb').write(response.content)
         with open('repos.json') as file:
                 db = json.load(file)
@@ -40,5 +40,5 @@ if args.create:
         headers = CaseInsensitiveDict()
         headers ["Content-Type"] = "application/json"
         data = open('template.json')
-        resp = requests.post(url, headers=headers, data=data, auth=('USER','PASSWORD'))
+        resp = requests.post(url, headers=headers, data=data, auth=('admin','admin123'))
         print(resp.status_code)

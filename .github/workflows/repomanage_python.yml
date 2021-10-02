@@ -39,13 +39,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-
-      - name: change variables in python script
-        run: |
-          sudo sed -i "s/USER/${{ secrets.NEXUS_USER }}/g" ${{github.workspace}}/scripts/repomanage.py"
-          sudo sed -i "s/PASSWORD/${{ secrets.NEXUS_PASSWORD }}/g" ${{github.workspace}}/scripts/repomanage.py"
-          cat ${{github.workspace}}/scripts/repomanage.py
-          #
       
       - name: execute py script
         env:
