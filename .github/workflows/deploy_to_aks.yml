@@ -24,9 +24,12 @@ jobs:
     environment: development
     steps:
 
-      - name: create Kube Config
+      - name: create Kube Config folder
         run: |
           mkdir -p $HOME/.kube
+
+      - name: create Kube Config file
+        run: |
           echo ${{ secrets.K8S_SECRET }} > $HOME/.kube/config
 
 
