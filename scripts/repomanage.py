@@ -15,7 +15,7 @@ args = parser.parse_args()
 
 if args.list:
 
-        response = requests.get('http://192.168.99.106:32000/service/rest/v1/repositories', auth=('admin', 'admin123'))
+        response = requests.get('http://192.168.99.106:32000/service/rest/v1/repositories', auth=('USER', 'PASSWORD'))
         open('repos.json', 'wb').write(response.content)
         with open('repos.json') as file:
                 db = json.load(file)
