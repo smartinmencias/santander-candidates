@@ -35,8 +35,8 @@ jobs:
 
     environment: development
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup_python@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup_python@v2
       - name: manage Nexus repository
         with:
           python-version: '3.x'
