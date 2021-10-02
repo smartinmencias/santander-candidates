@@ -37,8 +37,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: checkout
-      run: |
-        echo "haciendo checkout..."
+        run: |
+          echo "haciendo checkout..."
 
       - name: exec python
       - uses: actions/setup_python@v2
