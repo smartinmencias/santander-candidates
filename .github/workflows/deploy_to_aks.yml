@@ -8,7 +8,7 @@ on:
 jobs:
   checking:
     name: Checking configuration
-    runs-on: [ self-hosted ]
+    runs-on: [ ubuntu-latest ]
     environment: development
     steps:
       - name: Check env variables
@@ -20,7 +20,7 @@ jobs:
 
   deploy_ansible:
     name: launch ansible to deploy to k8s
-    runs-on: [ self-hosted ]
+    runs-on: [ ubuntu-latest ]
     environment: development
     steps:
 
