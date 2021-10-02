@@ -42,7 +42,7 @@ jobs:
 
         run: | 
           sed -i "s/USER/${{ secrets.NEXUS_USER}}/g" ./scripts/repomanage.py" | sed -i "s/PASSWORD/${{ secrets.NEXUS_PASSWORD}}/g" ./scripts/repomanage.py"
-          python repomanage.py $ {{ env.ACTION }}
+          python repomanage.py ${{ env.ACTION }}
 
 
 #      - uses: actions/checkout@v2
