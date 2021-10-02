@@ -28,7 +28,7 @@ if args.list:
 if args.create:
         print ("El nombre del repo a crear es:", args.create)
 
-        with open(r'./template.json') as file :
+        with open(r'./scripts/template.json') as file :
                 filedata = file.read()
 
         filedata = filedata.replace('NAME_REPO', args.create)
