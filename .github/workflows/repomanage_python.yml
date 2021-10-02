@@ -1,0 +1,66 @@
+name: repomanage python
+
+on:
+  workflow_dispatch:
+    inputs:
+
+      manage:
+        description: Use -l to list repository or use -c <repo_name> to create repository
+        required: false
+
+jobs:
+  checking:
+    name: Checking configuration
+    runs-on: [ ubuntu-latest ]
+    environment: development
+    steps:
+      - name: Check env variables
+        run: |
+          if [[ -z "${{secrets.NEXUS_PASSWORD}}" ]]; then
+            echo "Define environment variable NEXUS_PASSWORD in github environments"
+            exit -1
+
+          elif [[ -z "${{secrets.NEXUS_USER}}" ]]; then
+            echo "Define environment variable NEXUS_USER in github environments"
+            exit -2
+
+          fi
+
+  repomanage:
+    name: managing repo
+    runs-on: [ ubuntu-latest ]   
+    environment: development
+    steps:
+
+      - name: checkout repo content
+        uses: actions/checkout@v2
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      
+      - name: python dependencies
+        run:
+          python -m pip install -r ./scripts/requirements.txt
+
+      - name: execute py script
+        env:
+          ACTION: ${{ github.event.inputs.manage }}
+        run:
+          python ./scripts/repomanage.py ${{ env.ACTION }}
+
+
+
+
+
+
+#      - uses: actions/checkout@v2
+#      - uses: actions/setup_python@v2
+#      - name: manage Nexus repository
+ #       with:
+ #         python-version: '3.x'
+
+ #     - run: |
+ #         sed -i "s/USER/${{ secrets.NEXUS_USER}}/g" ./scripts/repomanage.py" | sed -i "s/PASSWORD/${{ secrets.NEXUS_PASSWORD}}/g" ./scripts/repomanage.py"
+ #         python repomanage.py $ {{ env.ACTION }}

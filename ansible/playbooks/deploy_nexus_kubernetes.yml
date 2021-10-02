@@ -1,0 +1,26 @@
+- hosts: localhost
+  tasks:
+
+  - name: Create a k8s namespace
+    community.kubernetes.k8s:
+      name: nexus
+      api_version: v1
+      kind: Namespace
+      state: present
+
+
+
+  - name: Create a Deployment by reading the definition from a local file
+    community.kubernetes.k8s:
+      state: present
+      src: ./Deployment.yml
+
+
+
+  - name: Create a Service by reading the definition from a local file
+    community.kubernetes.k8s:
+      state: present
+      src: ./Service.yml
+ 
+
+ 
