@@ -21,6 +21,7 @@ jobs:
   deploy_ansible:
     name: launch ansible to deploy to k8s
     runs-on: [ self-hosted ]
+    environment: development
     steps:
       - name: Deploy Nexus service with Ansible
         run: |
