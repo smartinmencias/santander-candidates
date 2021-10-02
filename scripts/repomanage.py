@@ -40,5 +40,5 @@ if args.create:
         headers = CaseInsensitiveDict()
         headers ["Content-Type"] = "application/json"
         data = open('template.json')
-        resp = requests.post(url, headers=headers, data=data, auth=('admin','admin123'))
+        resp = requests.post(url, headers=headers, data=data, auth=('USER','PASSWORD'))
         print(resp.status_code)
