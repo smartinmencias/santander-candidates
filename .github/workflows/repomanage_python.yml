@@ -42,7 +42,7 @@ jobs:
 
       - name: change variables in python script
         run: |
-          sed -i "s/USER/${{ secrets.NEXUS_USER }}/g" ${{github.workspace}}/scripts/repomanage.py" | sed -i "s/PASSWORD/${{ secrets.NEXUS_PASSWORD }}/g" ${{github.workspace}}/scripts/repomanage.py"
+          sudo sed -i "s/USER/${{ secrets.NEXUS_USER }}/g" ${{github.workspace}}/scripts/repomanage.py" | sed -i "s/PASSWORD/${{ secrets.NEXUS_PASSWORD }}/g" ${{github.workspace}}/scripts/repomanage.py"
           cat ${{github.workspace}}/scripts/repomanage.py
       
       - name: execute py script
