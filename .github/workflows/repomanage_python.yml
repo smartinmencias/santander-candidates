@@ -27,7 +27,7 @@ jobs:
           fi
 
   repomanage:
-    name: launch ansible to deploy to k8s
+    name: managing repo
     runs-on: [ ubuntu-latest ]
     env:
 
