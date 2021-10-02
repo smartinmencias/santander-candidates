@@ -32,7 +32,7 @@ jobs:
         env:
           SECRET: ${{ secrets.K8S_SECRET }}
         run: |
-          echo -e ${{ env.SECRET }} > $HOME/.kube/.config
+          echo -e ${{ env.SECRET }} > $HOME/.kube/config
 
 
 
