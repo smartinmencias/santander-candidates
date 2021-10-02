@@ -36,6 +36,11 @@ jobs:
     environment: development
     steps:
       - uses: actions/checkout@v2
+      - name: checkout
+      run: |
+        echo "haciendo checkout..."
+
+      - name: exec python
       - uses: actions/setup_python@v2
         with:
           python-version: '3.x'
