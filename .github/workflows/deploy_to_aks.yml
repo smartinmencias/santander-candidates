@@ -29,8 +29,11 @@ jobs:
           mkdir -p $HOME/.kube
 
       - name: create Kube Config file
+        env:
+          SECRET: ${{ secrets.K8S_SECRET }}
         run: |
-          echo ${{ secrets.K8S_SECRET }} > $HOME/.kube/config
+          echo -e $SECRET > $HOME/.kube
+
 
 
       - name: Deploy Nexus service with Ansible
