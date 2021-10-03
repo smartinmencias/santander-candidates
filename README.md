@@ -1,26 +1,21 @@
-Cosas a tener en cuenta
+**DESPLEGAR SONATYPE NEXUS A KUBERNETES VÍA ANSIBLE**
 
-    No es imprescindible terminar todo, se valorará el código y su presentación (poco pero hecho lo mejor posible, mejor que mucho y sin terminar)
-    Como corolario a lo anterior, se recomienda hacer lo que tengas más controlado
-    Se valorará:
-        buenas prácticas aplicadas (commit conventions, linting, pre-commits, etc...)
-        un pipeline de CI (Github Actions o similar)
-        despliegue del producto en Openshift / Kubernetes / DockerSwarm
-        documentación asociada al proyecto. Asumiremos que el laboratorio es para una persona con concomientos básicos.
-    Se marcan los pasos que se consideran mínimos (Req) en cada sección
 
-Prueba
-Ansible
+Para levantar una instancia de Sonatype Nexus en Kubernetes, lo primero que debemos hacer es comprobar nuestros **archivos .yml** (Deployment y Service) dentro de la carpeta **“ansible”**:
 
-    (Req) Uso de docker para levantar una instancia de Sonatype Nexus
-    (Req) Lectura de todos los repositorios existentes
-    Borrado de los repositorios
-    Generación de los repositorios como estaban inicialmente
+1. **./ansible/Deployment.yml** --> Usamos este archivo para crear nuestro Deploy
+1. **./ansible/Service.yml** --> Usamos este archivo para desplegar nuestro Servicio
 
-Python / TypeScript (Deno)
+Para hacer nuestro despliegue, usaremos nuestro archivo Kube Config, ubicado en:
 
-    (Req) Partiendo de una instancia de Nexus levantada
-    (Req) Lectura del listado de repositorios
-    Creación de un nuevo repositorio
-    Subida de un artefacto a mano al repositorio (Necesario para la siguiente)
-    Listado de los assets del repositorio
+**./ansible/files/config**
+
+Nuestro workflow desplegará, una vez aprobada nuestra PR en la rama master, nuestra instancia de Sonatype Nexus con las configuraciones realizadas en nuestros archivos **Deployment.yml** y **Service.yml**.
+
+**ADMINISTRACIÓN DE REPOSITORIOS CON SCRIPT DE PYTHON**
+
+En este caso, ejecutaremos nuestra Github Action manualmente. Para ello:
+1. Iremos a nuestro apartado Actions. Aquí seleccionaremos nuestro Action **"repomanage python"**.
+1. Seleccionaremos Run Workflow. En él, teclearemos las opciones:
+	- Para listar repositorios, teclearemos **-l**. El script, nos listará los repositorios disponibles en nuestro Nexus
+	- Podemos también crear repositorios apt. Para ello, introduciremos **-c <nombre de repo>**. El script, nos creará automáticamente nuestro repositorio
