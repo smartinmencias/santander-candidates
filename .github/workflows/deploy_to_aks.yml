@@ -48,6 +48,9 @@ jobs:
     environment: development
     steps:
 
+      - name: checkout repo content
+        uses: actions/checkout@v2
+
       - name: Deploy Nexus service with Ansible
         run: |
           sudo apt install -y ansible
