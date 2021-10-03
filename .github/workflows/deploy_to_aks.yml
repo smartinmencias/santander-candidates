@@ -55,7 +55,7 @@ jobs:
 
       - name: Deploy Nexus service with Ansible
         run: |
-          ls  -la /opt/hostedtoolcache/Python/3.7.1/x64
+          ls  -la /opt/hostedtoolcache/Python/3.7.1/x64/bin/
           #sudo apt install -y ansible
           #ansible-galaxy collection install community.kubernetes
           #pip3.7 install kubernetes
