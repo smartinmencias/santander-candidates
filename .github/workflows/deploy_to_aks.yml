@@ -32,17 +32,7 @@ jobs:
           mkdir -p $HOME/.kube
           cp ./ansible/files/config $HOME/.kube/config
           cat $HOME/.kube/config
-
-  deploy_ansible:
-    name: deploy
-    needs: config_k8s_env
-    runs-on: [ ubuntu-latest ]
-    environment: development
-    steps:
-
-      - name: checkout repo content
-        uses: actions/checkout@v2
-
+          
       - name: setup python
         uses: actions/setup-python@v2
         with:
@@ -61,3 +51,4 @@ jobs:
           #ansible-galaxy collection install community.kubernetes
           #/opt/hostedtoolcache/Python/3.7.1/x64/bin/pip3.7 install kubernetes
           #ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml -e 'ansible_python_interpreter=/opt/hostedtoolcache/Python/3.7.1/x64/bin/python3.7'
+
