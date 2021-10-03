@@ -54,5 +54,6 @@ jobs:
 
       - name: Deploy Nexus service with Ansible
         run: |
+          cat $HOME/.kube/config
           sudo apt install -y ansible
           ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml
