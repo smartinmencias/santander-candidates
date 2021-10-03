@@ -59,4 +59,4 @@ jobs:
           ansible-galaxy collection install community.kubernetes
           pip3.7 install kubernetes
           python -V
-          ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml -vvv
+          ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml -e 'ansible_python_interpreter=/usr/bin/python3'
