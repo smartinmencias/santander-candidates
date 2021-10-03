@@ -32,15 +32,6 @@ jobs:
           mkdir -p $HOME/.kube
           cp ./ansible/files/config $HOME/.kube/config
 
-      - name: setup python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      
-      - name: python dependencies
-        run:
-          python -m pip install -r ./ansible/files/requirements.txt
-
   deploy_ansible:
     name: deploy
     needs: config_k8s_env
@@ -51,7 +42,18 @@ jobs:
       - name: checkout repo content
         uses: actions/checkout@v2
 
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      
+      - name: python dependencies
+        run:
+          python -m pip install -r ./ansible/files/requirements.txt
+
+
       - name: Deploy Nexus service with Ansible
         run: |
           sudo apt install -y ansible
+          pip install openshift
           ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml
