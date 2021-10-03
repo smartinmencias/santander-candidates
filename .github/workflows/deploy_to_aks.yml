@@ -36,9 +36,6 @@ jobs:
     name: deploy
     needs: config_k8s_env
     runs-on: [ ubuntu-latest ]
-    strategy:
-      matrix:
-        python-version: [ '2.x', '3.x', 'pypy-2.7', 'pypy-3.6', 'pypy-3.7' ]
     environment: development
     steps:
 
@@ -48,7 +45,7 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: '2.x'
       
       - name: python dependencies
         run:
