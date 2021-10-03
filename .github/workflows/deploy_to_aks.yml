@@ -55,5 +55,4 @@ jobs:
       - name: Deploy Nexus service with Ansible
         run: |
           sudo apt install -y ansible
-          pip3 install openshift pyyaml kubernetes --user
           ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml
