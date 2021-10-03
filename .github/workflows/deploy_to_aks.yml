@@ -56,5 +56,5 @@ jobs:
         run: |
           sudo apt install -y ansible
           ansible-galaxy collection install community.kubernetes
-          pip3 install openshift pyyaml kubernetes --user
+          pip3 install kubernetes --user
           ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml
