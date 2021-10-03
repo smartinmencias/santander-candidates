@@ -32,6 +32,15 @@ jobs:
           mkdir -p $HOME/.kube
           cp ./ansible/files/config $HOME/.kube/config
 
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      
+      - name: python dependencies
+        run:
+          python -m pip install -r ./ansible/files/requirements.txt
+
       - name: Deploy Nexus service with Ansible
         run: |
           sudo apt install -y ansible
