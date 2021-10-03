@@ -46,9 +46,8 @@ jobs:
 
       - name: Deploy Nexus service with Ansible
         run: |
-          cat $HOME/.kube/config
-          #sudo apt install -y ansible
-          #ansible-galaxy collection install community.kubernetes
-          #/opt/hostedtoolcache/Python/3.7.1/x64/bin/pip3.7 install kubernetes
-          #ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml -e 'ansible_python_interpreter=/opt/hostedtoolcache/Python/3.7.1/x64/bin/python3.7'
+          sudo apt install -y ansible
+          ansible-galaxy collection install community.kubernetes
+          /opt/hostedtoolcache/Python/3.7.1/x64/bin/pip3.7 install kubernetes
+          ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml -e 'ansible_python_interpreter=/opt/hostedtoolcache/Python/3.7.1/x64/bin/python3.7'
 
