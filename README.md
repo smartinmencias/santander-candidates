@@ -15,7 +15,7 @@ Nuestro workflow desplegará, una vez aprobada nuestra PR en la rama master, nue
 **ADMINISTRACIÓN DE REPOSITORIOS CON SCRIPT DE PYTHON**
 
 En este caso, ejecutaremos nuestra Github Action manualmente. Para ello:
-1.- Iremos a nuestro apartado Actions. Aquí seleccionaremos nuestro Action repomanage python.
-2.- Seleccionaremos Run Workflow. En él, teclearemos las opciones:
+1. Iremos a nuestro apartado Actions. Aquí seleccionaremos nuestro Action repomanage python.
+1. Seleccionaremos Run Workflow. En él, teclearemos las opciones:
 	- Para listar repositorios, teclearemos -l. El script, nos listará los repositorios disponibles en nuestro Nexus
 	- Podemos también crear repositorios apt. Para ello, introduciremos -c <nombre de repo>. El script, nos creará automáticamente nuestro repositorio
