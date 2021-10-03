@@ -31,29 +31,23 @@ jobs:
         run: |
           mkdir -p $HOME/.kube
           cp ./ansible/files/config $HOME/.kube/config
-
-  deploy_ansible:
-    name: deploy
-    needs: config_k8s_env
-    runs-on: [ ubuntu-latest ]
-    environment: development
-    steps:
-
-      - name: checkout repo content
-        uses: actions/checkout@v2
-
+          cat $HOME/.kube/config
+          
       - name: setup python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: '3.7.1'
+          # architecture: 'x86'
       
-      - name: python dependencies
-        run:
-          python -m pip install -r ./ansible/files/requirements.txt
+     # - name: python dependencies
+      #  run:
+         #python -m pip install -r ./ansible/files/requirements.txt
 
 
       - name: Deploy Nexus service with Ansible
         run: |
-          cat $HOME/.kube/config
           sudo apt install -y ansible
-          ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml
+          ansible-galaxy collection install community.kubernetes
+          /opt/hostedtoolcache/Python/3.7.1/x64/bin/pip3.7 install kubernetes
+          ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml -e 'ansible_python_interpreter=/opt/hostedtoolcache/Python/3.7.1/x64/bin/python3.7'
+
