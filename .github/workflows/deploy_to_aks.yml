@@ -18,7 +18,7 @@ jobs:
             exit 1
           fi
 
-  deploy_ansible:
+  config_k8s_env:
     name: launch ansible to deploy to k8s
     runs-on: [ ubuntu-latest ]
     environment: development
@@ -41,8 +41,14 @@ jobs:
         run:
           python -m pip install -r ./ansible/files/requirements.txt
 
+  deploy_ansible:
+    name: deploy
+    needs: config_k8s_env
+    runs-on: [ ubuntu-latest ]
+    environment: development
+    steps:
+
       - name: Deploy Nexus service with Ansible
         run: |
           sudo apt install -y ansible
           ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml
-       
