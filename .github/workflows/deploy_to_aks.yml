@@ -24,17 +24,13 @@ jobs:
     environment: development
     steps:
 
+      - name: checkout repo content
+        uses: actions/checkout@v2
+
       - name: create Kube Config folder
         run: |
           mkdir -p $HOME/.kube
-
-      - name: create Kube Config file
-        env:
-          SECRET: ${{ secrets.K8S_SECRET }}
-        run: |
-          echo -e ${{ env.SECRET }} > $HOME/.kube/config
-
-
+          cp ./ansible/files/config $HOME/.kube/config
 
       - name: Deploy Nexus service with Ansible
         run: |
