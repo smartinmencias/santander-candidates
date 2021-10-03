@@ -56,4 +56,4 @@ jobs:
         run: |
           sudo apt install -y ansible
           pip install openshift pyyaml kubernetes
-          ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml
+          ansible-playbook ./ansible/playbooks/deploy_nexus_kubernetes.yml -e 'ansible_python_interpreter=/usr/bin/python3'
