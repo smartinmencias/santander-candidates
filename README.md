@@ -3,8 +3,8 @@
 
 Para levantar una instancia de Sonatype Nexus en Kubernetes, lo primero que debemos hacer es comprobar nuestros **archivos .yml** (Deployment y Service) dentro de la carpeta **“ansible”**:
 
-**./ansible/Deployment.yml** --> Usamos este archivo para crear nuestro Deploy
-**./ansible/Service.yml** --> Usamos este archivo para desplegar nuestro Servicio
+1. **./ansible/Deployment.yml** --> Usamos este archivo para crear nuestro Deploy
+1. **./ansible/Service.yml** --> Usamos este archivo para desplegar nuestro Servicio
 
 Para hacer nuestro despliegue, usaremos nuestro archivo Kube Config, ubicado en:
 
