@@ -37,12 +37,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.7.1'
-          # architecture: 'x86'
-      
-     # - name: python dependencies
-      #  run:
-         #python -m pip install -r ./ansible/files/requirements.txt
-
 
       - name: Deploy Nexus service with Ansible
         run: |
